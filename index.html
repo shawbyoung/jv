@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Biography</title>
   <style>
     /* Load Terminus webfont (bitmap-style) */
@@ -21,12 +21,12 @@
     body {
       font-family: "Terminus", "Courier New", Courier, monospace;
       margin: 0;
-      padding: 0;
       background: #fff;
       color: #000;
       line-height: 1.6;
     }
 
+    /* Header */
     header {
       background: #fff;
       color: #000;
@@ -36,12 +36,11 @@
     }
     header h1 {
       margin: 0;
-      font-family: "Terminus", "Courier New", Courier, monospace;
-      font-size: 2.5rem;
-      display: inline-block;                  /* keep layout stable */
+      font-size: 2.2rem;
+      display: inline-block;
       border-left: var(--border) solid transparent;
       border-bottom: var(--border) solid transparent;
-      padding-left: 4px;                      /* reserve the same padding */
+      padding-left: 4px;
       transition: border-color 0.15s ease-in-out;
     }
     header h1:hover {
@@ -50,14 +49,54 @@
     }
     header p {
       margin: 0.5rem 0 0;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #333;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    /* Layout: side nav + main */
+    .layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Side nav */
+    .sidenav {
+      border-right: 1px solid #000;
+      padding: 1rem;
+      position: sticky;
+      top: 0;               /* sticks after header scrolls out */
+      align-self: start;
+      height: 100%;
+    }
+    .sidenav nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidenav nav li + li {
+      margin-top: 0.5rem;
+    }
+    .sidenav a {
+      text-decoration: none;
+      color: #000;
+      display: block;
+      border-left: var(--border) solid transparent; /* reserve space to prevent shift */
+      padding: 0.25rem 0.25rem 0.25rem 6px;
+      outline: none;
+      transition: border-color 0.12s ease-in-out, background-color 0.12s ease-in-out;
+    }
+    .sidenav a:hover,
+    .sidenav a:focus-visible {
+      border-left-color: #000;     /* subtle terminal-like cue */
+      background: #f2f2f2;
+    }
+
+    /* Main content */
+    main {
+      padding: 2rem 1rem;
     }
     .bio {
       background: #fff;
@@ -65,23 +104,19 @@
       border: 1px solid #000;
       text-align: left;
     }
-
-    /* FIX: reserve borders/padding and keep inline-block always */
     .bio h2 {
       margin-top: 0;
-      font-size: 2rem;
-      font-family: "Terminus", "Courier New", Courier, monospace;
-      display: inline-block;                  /* don't switch on hover */
+      font-size: 1.8rem;
+      display: inline-block;                  /* keep layout stable */
       border-left: var(--border) solid transparent;
       border-bottom: var(--border) solid transparent;
-      padding-left: 4px;                      /* same padding both states */
+      padding-left: 4px;
       transition: border-color 0.15s ease-in-out;
     }
     .bio h2:hover {
       border-left-color: #000;
       border-bottom-color: #000;
     }
-
     .bio p { margin: 1rem 0; }
 
     footer {
@@ -92,45 +127,76 @@
       border-top: 1px solid #000;
     }
 
-    /* Reduce movement for users who prefer less motion */
+    /* Responsive: collapse to top nav on narrow screens */
+    @media (max-width: 780px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidenav {
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid #000;
+        padding: 0.5rem 1rem;
+      }
+      .sidenav nav ul {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .sidenav nav li + li { margin-top: 0; }
+      .sidenav a { padding: 0.4rem 0.5rem; }
+    }
+
+    /* Reduce motion preference */
     @media (prefers-reduced-motion: reduce) {
       header h1,
-      .bio h2 { transition: none; }
+      .bio h2,
+      .sidenav a { transition: none; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to my page</h1>
+    <h1>Welcome to My Page</h1>
     <p>A little about me</p>
   </header>
 
-  <div class="container">
-    <section class="bio">
-      <h2>Shaw Young</h2>
-      <p>I spent some terrible winters in Ann Arbor getting my 
-        bachelor's (after spending my adolescence in the Florida Keys, 
-        San Diego, and Virginia) but met some good people and now am based out
-        of New York City.</p> 
+  <div class="layout">
+    <aside class="sidenav" aria-label="Primary">
+      <nav>
+        <ul role="list">
+          <li><a href="blog/">Blog</a></li>
+          <li><a href="resume/">Résumé</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-      <p>It'll be ~4 years until I've spent more time programming than not and 
-        am most proud of my (humble) work on LLVM. I've worked at a few tech 
-        companies with varying levels of enthusiasm.</p> 
+    <main>
+      <section class="bio">
+        <h2>Shaw Young</h2>
+        <p>I spent some terrible winters in Ann Arbor getting my 
+            bachelor's (after spending my adolescence in the Florida Keys, 
+            San Diego, and Virginia) but met some good people and now am based out
+            of New York City.</p> 
 
-      <p>I don't believe in the AI hype (transformers and their tooling cannot
-        replicate human intelligence) but by God do investors love to see "AI"
-        in earnings reports and pitch decks. I think the popping of the AI 
-        bubble will accompany the next great financial crisis. I think Yann 
-        LeCun is right and true AGI/superintelligence/whatever requires a world 
-        model. I think LLMs will (continue to) be great ways to query existing 
-        knowledge but nothing more. I think AI will ultimately create more good
-        than bad (the automation of labor) but severely negatively impact the 
-        quality of life for the average person (the automation of labor) in 
-        the short term.</p> 
+        <p>It'll be ~4 years until I've spent more time programming than not and 
+            am most proud of my (humble) work on LLVM. I've worked at a few tech 
+            companies with varying levels of enthusiasm.</p> 
 
-      <p>I worry about the global economy, climate, microplastics, and short
-        form content.</p>
-    </section>
+        <p>I don't believe in the AI hype (transformers and their tooling cannot
+            replicate human intelligence) but by God do investors love to see "AI"
+            in earnings reports and pitch decks. I think the popping of the AI 
+            bubble will accompany the next great financial crisis. I think Yann 
+            LeCun is right and true AGI/superintelligence/whatever requires a world 
+            model. I think LLMs will (continue to) be great ways to query existing 
+            knowledge but nothing more. I think AI will ultimately create more good
+            than bad (the automation of labor) but severely negatively impact the 
+            quality of life for the average person (the automation of labor) in 
+            the short term.</p> 
+
+        <p>I worry about the global economy, climate, microplastics, and short
+            form content.</p>
+      </section>
+    </main>
   </div>
 
   <footer>
