@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Biography</title>
+  <style>
+    /* Load Terminus webfont (bitmap-style) */
+    @font-face {
+      font-family: 'Terminus';
+      src: url('https://fonts.cdnfonts.com/s/16468/TerminusTTF-4.49.3.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root { --border: 1px; }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Terminus", "Courier New", Courier, monospace;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #fff;
+      color: #000;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #000;
+    }
+    header h1 {
+      margin: 0;
+      font-family: "Terminus", "Courier New", Courier, monospace;
+      font-size: 2.5rem;
+      display: inline-block;                  /* keep layout stable */
+      border-left: var(--border) solid transparent;
+      border-bottom: var(--border) solid transparent;
+      padding-left: 4px;                      /* reserve the same padding */
+      transition: border-color 0.15s ease-in-out;
+    }
+    header h1:hover {
+      border-left-color: #000;
+      border-bottom-color: #000;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .bio {
+      background: #fff;
+      padding: 2rem;
+      border: 1px solid #000;
+      text-align: left;
+    }
+
+    /* FIX: reserve borders/padding and keep inline-block always */
+    .bio h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      font-family: "Terminus", "Courier New", Courier, monospace;
+      display: inline-block;                  /* don't switch on hover */
+      border-left: var(--border) solid transparent;
+      border-bottom: var(--border) solid transparent;
+      padding-left: 4px;                      /* same padding both states */
+      transition: border-color 0.15s ease-in-out;
+    }
+    .bio h2:hover {
+      border-left-color: #000;
+      border-bottom-color: #000;
+    }
+
+    .bio p { margin: 1rem 0; }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #333;
+      border-top: 1px solid #000;
+    }
+
+    /* Reduce movement for users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      header h1,
+      .bio h2 { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to my page</h1>
+    <p>A little about me</p>
+  </header>
+
+  <div class="container">
+    <section class="bio">
+      <h2>Shaw Young</h2>
+      <p>I spent some terrible winters in Ann Arbor getting my 
+        bachelor's (after spending my adolescence in the Florida Keys, 
+        San Diego, and Virginia) but met some good people and now am based out
+        of New York City.</p> 
+
+      <p>It'll be ~4 years until I've spent more time programming than not and 
+        am most proud of my (humble) work on LLVM. I've worked at a few tech 
+        companies with varying levels of enthusiasm.</p> 
+
+      <p>I don't believe in the AI hype (transformers and their tooling cannot
+        replicate human intelligence) but by God do investors love to see "AI"
+        in earnings reports and pitch decks. I think the popping of the AI 
+        bubble will accompany the next great financial crisis. I think Yann 
+        LeCun is right and true AGI/superintelligence/whatever requires a world 
+        model. I think LLMs will (continue to) be great ways to query existing 
+        knowledge but nothing more. I think AI will ultimately create more good
+        than bad (the automation of labor) but severely negatively impact the 
+        quality of life for the average person (the automation of labor) in 
+        the short term.</p> 
+
+      <p>I worry about the global economy, climate, microplastics, and short
+        form content.</p>
+    </section>
+  </div>
+
+  <footer>
+    reach me: shawyoungdev [at] gmail [dot] com
+  </footer>
+</body>
+</html>
