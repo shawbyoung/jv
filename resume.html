@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Résumé — Shaw Young</title>
+  <style>
+    /* Terminus webfont + fallbacks */
+    @font-face {
+      font-family: 'Terminus';
+      src: url('https://fonts.cdnfonts.com/s/16468/TerminusTTF-4.49.3.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root { --border: 1px; }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Terminus", "Courier New", Courier, monospace;
+      margin: 0;
+      background: #fff;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      color: #000;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      display: inline-block;
+      border-left: var(--border) solid transparent;
+      border-bottom: var(--border) solid transparent;
+      padding-left: 4px;
+      transition: border-color 0.15s ease-in-out;
+    }
+    header h1:hover {
+      border-left-color: #000;
+      border-bottom-color: #000;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    /* Layout: side nav + main */
+    .layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Side nav */
+    .sidenav {
+      border-right: 1px solid #000;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100%;
+    }
+    .sidenav nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidenav nav li + li { margin-top: 0.5rem; }
+    .sidenav a {
+      text-decoration: none;
+      color: #000;
+      display: block;
+      border-left: var(--border) solid transparent;
+      padding: 0.25rem 0.25rem 0.25rem 6px;
+      transition: border-color 0.12s ease-in-out, background-color 0.12s ease-in-out;
+    }
+    .sidenav a:hover, .sidenav a:focus-visible {
+      border-left-color: #000;
+      background: #f2f2f2;
+      outline: none;
+    }
+    .sidenav a[aria-current="page"] {
+      border-left-color: #000;
+      background: #f6f6f6;
+      font-weight: bold;
+    }
+
+    /* Main content */
+    main { padding: 2rem 1rem; }
+    .resume {
+      background: #fff;
+      padding: 2rem;
+      border: 1px solid #000;
+    }
+
+    .resume h2 {
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.4rem;
+      display: inline-block;
+      border-left: var(--border) solid transparent;
+      border-bottom: var(--border) solid transparent;
+      padding-left: 4px;
+      transition: border-color 0.15s ease-in-out;
+    }
+    .resume h2:hover {
+      border-left-color: #000;
+      border-bottom-color: #000;
+    }
+
+    .section { margin-bottom: 1.25rem; }
+
+    /* Small helpers */
+    .row { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline; }
+    .spacer { flex: 1 1 auto; }
+    .muted { color: #333; }
+    .inline-list { list-style: disc; padding-left: 1.25rem; margin: 0.25rem 0 0; }
+    .tight li { margin: 0.25rem 0; }
+
+    a { color: #000; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #333;
+      border-top: 1px solid #000;
+    }
+
+    /* Responsive */
+    @media (max-width: 780px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidenav { position: static; border-right: none; border-bottom: 1px solid #000; }
+      .sidenav nav ul { display: flex; gap: 0.75rem; }
+      .sidenav nav li + li { margin-top: 0; }
+    }
+
+    /* Print styles (nice PDF export) */
+    @media print {
+      header, .sidenav, footer { display: none !important; }
+      .resume { border: none; padding: 0; }
+      body { margin: 0.5in; }
+      a { text-decoration: none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      header h1, .resume h2, .sidenav a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Résumé</h1>
+    <p>Shaw Young</p>
+  </header>
+
+  <div class="layout">
+    <aside class="sidenav" aria-label="Primary">
+      <nav>
+        <ul role="list">
+          <li><a href="blog/">Blog</a></li>
+          <li><a href="resume.html" aria-current="page">Résumé</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <article class="resume">
+        <!-- Experience -->
+        <section class="section" id="experience">
+          <h2>Professional Experience</h2>
+
+          <div class="row">
+            <strong>Stealth</strong> <span class="muted">| Building...</span>
+            <div class="spacer"></div>
+            <span class="muted">Summer 2025 – Present</span>
+          </div>
+
+          <div class="row" style="margin-top:0.5rem;">
+            <strong>Meta</strong> <span class="muted">| Software Engineer Intern</span>
+            <div class="spacer"></div>
+            <span class="muted">Summer 2024</span>
+          </div>
+          <ul class="inline-list tight">
+            <li>Improved a state-of-the-art, open-source binary optimizer (<a href="https://github.com/llvm/llvm-project/blob/main/bolt/README.md">LLVM BOLT</a>) deployed at large scale in Meta’s datacenters, impacting <em>80% of fleet CPU cycles</em>, directly affecting OpEx and CapEx. (C++)</li>
+          </ul>
+
+          <div class="row" style="margin-top:0.5rem;">
+            <strong>Amazon</strong> <span class="muted">| Software Engineer Intern</span>
+            <div class="spacer"></div>
+            <span class="muted">Fall 2024</span>
+          </div>
+
+          <div class="row" style="margin-top:0.5rem;">
+            <strong>Microsoft</strong> <span class="muted">| Software Engineer Intern</span>
+            <div class="spacer"></div>
+            <span class="muted">Summer 2023</span>
+          </div>
+
+        <!-- Education -->
+        <section class="section" id="education">
+          <h2>Education</h2>
+
+          <div class="row">
+            <strong>The University of Michigan, Ann Arbor</strong>
+            <div class="spacer"></div>
+            <span class="muted">BS in Computer Science — Spring 2025</span>
+          </div>
+          <ul class="inline-list tight">
+            <li><a href="https://www.michiganinvestmentgroup.com/">Michigan Investment Group</a></li>
+          </ul>
+
+          <div class="row" style="margin-top:0.5rem;">
+            <strong>Thomas Jefferson High School for Science and Technology</strong>
+            <div class="spacer"></div>
+            <span class="muted">Spring 2021</span>
+          </div>
+          <ul class="inline-list tight">
+            <li><a href="https://wtop.com/local/2021/04/several-local-high-schools-rank-as-some-of-the-best-in-the-nation/">#1 ranked US high school in 2021</a></li>
+          </ul>
+        </section>
+
+        <!-- Skills -->
+        <section class="section" id="skills">
+          <h2>Enumerated Skills</h2>
+          <p><strong>Languages:</strong> C++, Python, SQL, Bash</p>
+          <p><strong>Tools:</strong> LLVM, Git</p>
+          <p><strong>Non-technical:</strong> Communication, Empathy</p>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    reach me: shawyoungdev [at] gmail [dot] com
+  </footer>
+</body>
+</html>
