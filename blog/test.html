@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><!-- Post Title -->Blog Post Title — Shaw Young</title>
+  <meta name="description" content="One-line description of this post." />
+  <style>
+    /* Terminus webfont + fallbacks */
+    @font-face {
+      font-family: 'Terminus';
+      src: url('https://fonts.cdnfonts.com/s/16468/TerminusTTF-4.49.3.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root { --border: 1px; --maxw: 820px; }
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Terminus", "Courier New", Courier, monospace;
+      margin: 0;
+      background: #fff;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      color: #000;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid #000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      display: inline-block;
+      border-left: var(--border) solid transparent;
+      border-bottom: var(--border) solid transparent;
+      padding-left: 4px;
+      transition: border-color 0.15s ease-in-out;
+    }
+    header h1:hover { border-left-color: #000; border-bottom-color: #000; }
+    header p { margin: 0.5rem 0 0; font-size: 1.05rem; color: #333; }
+
+    /* Layout: side nav + main */
+    .layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Side nav */
+    .sidenav {
+      border-right: 1px solid #000;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100%;
+    }
+    .sidenav nav ul { list-style: none; padding: 0; margin: 0; }
+    .sidenav nav li + li { margin-top: 0.5rem; }
+    .sidenav a {
+      text-decoration: none;
+      color: #000;
+      display: block;
+      border-left: var(--border) solid transparent; /* reserve space to prevent shift */
+      padding: 0.25rem 0.25rem 0.25rem 6px;
+      transition: border-color 0.12s ease-in-out, background-color 0.12s ease-in-out;
+      outline: none;
+    }
+    .sidenav a:hover, .sidenav a:focus-visible {
+      border-left-color: #000;
+      background: #f2f2f2;
+    }
+
+    /* Main content (article) */
+    main { padding: 2rem 1rem; }
+
+    article.post {
+      border: 1px solid #000;
+      background: #fff;
+      max-width: var(--maxw);
+      margin: 0 auto;            /* centers the article block */
+      padding: 2rem;
+    }
+
+    .post h2, .post h3, .post h4 {
+      display: inline-block;
+      border-left: var(--border) solid transparent;
+      border-bottom: var(--border) solid transparent;
+      padding-left: 4px;
+      transition: border-color 0.15s ease-in-out;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .post h2:hover, .post h3:hover, .post h4:hover {
+      border-left-color: #000;
+      border-bottom-color: #000;
+    }
+
+    .post-title {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.9rem;
+      display: inline-block;
+      border-left: var(--border) solid transparent;
+      border-bottom: var(--border) solid transparent;
+      padding-left: 4px;
+      transition: border-color 0.15s ease-in-out;
+    }
+    .post-title:hover { border-left-color: #000; border-bottom-color: #000; }
+
+    .post-meta {
+      color: #444;
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      align-items: baseline;
+    }
+    .tags { display: inline-flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tag {
+      border: 1px solid #000;
+      padding: 0 0.35rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      background: #fafafa;
+    }
+
+    /* Content utilities */
+    .lead { font-size: 1.08rem; margin-bottom: 1rem; }
+    .post p { margin: 1rem 0; }
+    .post a { color: #000; }
+    .post a:hover { text-decoration: underline; }
+
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 2px solid #000;
+      background: #f8f8f8;
+    }
+
+    pre, code, kbd, samp {
+      font-family: "Terminus", "Courier New", Courier, monospace;
+    }
+    pre {
+      overflow: auto;
+      border: 1px solid #000;
+      padding: 0.75rem 1rem;
+      background: #f5f5f5;
+      margin: 1rem 0;
+      white-space: pre;
+    }
+    code { background: #f2f2f2; padding: 0.1rem 0.25rem; border: 1px solid #000; }
+
+    hr { border: none; border-top: 1px solid #000; margin: 1.5rem 0; }
+
+    /* Nav at bottom of post */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      border-top: 1px solid #000;
+      padding-top: 1rem;
+    }
+    .post-nav a { text-decoration: none; }
+    .post-nav a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #333;
+      border-top: 1px solid #000;
+    }
+
+    /* Responsive */
+    @media (max-width: 780px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidenav { position: static; border-right: none; border-bottom: 1px solid #000; }
+      .sidenav nav ul { display: flex; gap: 0.75rem; }
+      .sidenav nav li + li { margin-top: 0; }
+      article.post { padding: 1.25rem; }
+    }
+
+    /* Print */
+    @media print {
+      header, .sidenav, footer { display: none !important; }
+      article.post { border: none; padding: 0; }
+      body { margin: 0.5in; }
+      a { text-decoration: none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      header h1, .post-title, .post h2, .post h3, .post h4, .sidenav a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blog</h1>
+    <p>Posts &amp; notes</p>
+  </header>
+
+  <div class="layout">
+    <aside class="sidenav" aria-label="Primary">
+      <nav>
+        <ul role="list">
+          <li><a href="../index.html" aria-current="page">About me</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../resume.html">Résumé</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+        <!-- Post Header -->
+        <h2 class="post-title" itemprop="headline">Blog Post Title</h2>
+        <div class="post-meta">
+          <time datetime="2025-08-22" itemprop="datePublished">Aug 22, 2025</time>
+          <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+            by <span itemprop="name">Shaw Young</span>
+          </span>
+          <span class="tags" aria-label="Tags">
+            <span class="tag">tag1</span>
+            <span class="tag">tag2</span>
+            <span class="tag">tag3</span>
+          </span>
+        </div>
+
+        <!-- Optional lead -->
+        <p class="lead"><!-- intro paragraph -->A short overview or teaser for the post lives here.</p>
+
+        <!-- Body content -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet venenatis justo, in dictum est tempor at.</p>
+
+        <h3>Section Heading</h3>
+        <p>Use sections to break up content. Keep paragraphs short.</p>
+
+        <pre><code>// Code example
+struct Hello {
+  void say() const { std::puts("hello"); }
+};</code></pre>
+
+        <blockquote>
+          “A relevant quote or a callout can live here for emphasis.”
+        </blockquote>
+
+        <p>Link to related work, e.g., <a href="https://google.com">LLVM</a>.</p>
+
+        <hr />
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    reach me: shawyoungdev [at] gmail [dot] com
+  </footer>
+</body>
+</html>
